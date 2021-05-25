@@ -1,3 +1,6 @@
+//pt 1*
+//pt 2
+
 exports.toRoman = function(num) {
   let ansStr = '';
   do {
@@ -15,22 +18,32 @@ exports.toRoman = function(num) {
     }
     else if (num >= 50){
       num -= 50;
-      ansStr += 'L'
+      ansStr += 'L';
     }
     else if (num >= 10){
       num -= 10;
-      ansStr += 'X'
+      ansStr += 'X';
     }
     else if (num >= 5){
       num -= 5;
-      ansStr += 'V'
+      ansStr += 'V';
+    }
+    else if (num === 4){
+      num -= 4;
+      ansStr += 'IV';
     }
     else {
       num -= 1;
       ansStr += 'I'
     }
   } while (num > 0);
-  console.log(ansStr)
+  return ansStr;
 };
 
+/*
+if (num >= 900 && num < 1000) {
+   num -= 900
+   ansStr += "CM"} // for times sake -- conditions would reflect this
+
+/*
 
