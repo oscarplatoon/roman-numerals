@@ -44,6 +44,7 @@ exports.toRoman = function(num) {
         answer += (results[key-1] + letters[(letters.indexOf(results[key-1])- 1)])
     } else {
         answer += placeholder.join('')
-    }console.log(answer)
+    }
+    return(answer)
 };
 
