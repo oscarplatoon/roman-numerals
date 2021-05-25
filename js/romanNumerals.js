@@ -3,35 +3,33 @@
 // };
 
 const toRoman = (num) => {
+  let answer = "";
   
-  var romanNumerals = {
-    1 : "I",
-    5 : "V",
-    10 : "X",
-    50 : "L",
-    100 : "C",
-    500 : "D",
-    1000 : "M",
+  const map = {
+    M:1000,CM:900, D:500,CD:400, C:100, XC:90,L:50, XV:40, X:10, IX:9, V:5, IV:4, I:1
   }
-
-  let count = 0;
-  var array = [];
-
-for (let i=num; i > 5; i--) {
-    let countTwo = 0;
-    count++;
-    countTwo++;
-    array.push(romanNumerals[countTwo])
-    // console.log(array.toString());
-    
+  let a;
+  // Checking for invalid number
+  if (num < 1 || num > 3000) {
+    return "Invalid";
+  // 
+  } else {
+    for (let key in map) {
+      // Getting index of num and assigning to a variable
+      a = Math.floor(num / map[key]);
+      // Checking our new variable location in map
+      if(a >= 0) {
+      // Filters the zeros out
+        for(let i = 0; i < a; i++){
+      // Updates the answer with the correct index location
+          answer += key;
+        }
+      }
+      // Stops infinite
+      num = num % map[key];
+    }
   }
-
-  let x = (num - count);
-  array.unshift(romanNumerals[x]);
-  
-  let y = (array.join(''));
-  console.log(y);
-
+  return answer;
 }
 
-toRoman(15);
+console.log(toRoman(100));
