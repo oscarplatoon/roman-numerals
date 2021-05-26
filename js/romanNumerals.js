@@ -28,31 +28,57 @@ const decimalToRoman = [
     { 1:      "I"}
 ]
 
+const decimalToRomanModern = [
+    { 1000:   "M"},
+    { 900:    "CM"},
+    { 500:    "D"},
+    { 400:    "CD"},
+    { 100:    "C"},
+    { 90:     "XC"},
+    { 50:     "L"},
+    { 40:     "XL"},
+    { 10:     "X"},
+    { 9:      "IX"},
+    { 5:      "V"},
+    { 4:      "IV"},
+    { 1:      "I"}
+]
+
+
 exports.toRoman = function(num) {
+    return convertToRoman(num, decimalToRoman)
+};
+
+exports.toRomanModern = function(num) {
+    return convertToRoman(num, decimalToRomanModern)
+}
+
+
+
+
+
+function convertToRoman(num, conversionData) {
     let romanStr = ""
 
-    for (let obj of decimalToRoman) {
+    for (let obj of conversionData) {
         let inc = Object.keys(obj)[0]
         let roman = obj[inc]
-        //console.log(decimal)
-        //console.log(obj[decimal])
 
         let result = Math.floor(num / inc) 
-        //console.log(result)
 
         for (let i = 0; i < result; i++) {
             romanStr += roman
         }
 
-        //console.log(romanStr)
         num = num % inc
 
         if (num === 0) {
             break
         }
     } 
-    console.log(romanStr)
+    //console.log(romanStr)
     return romanStr 
-};
+}
+
 
 //exports.toRoman(683)
