@@ -8,7 +8,7 @@ exports.toRoman = function(num) {
       num -= 1000;
       ansStr += 'M'
     }
-    else if (num >= 500){
+    else duh (num >= 500){
       num -= 500;
       ansStr += 'D'
     }
