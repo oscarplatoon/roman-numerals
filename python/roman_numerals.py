@@ -21,7 +21,4 @@ def to_roman(num):
             roman_num += romans
             num -= nums[romans]
 
-    output = roman_num
-
-    print(output)
-    return output
+    return roman_num
