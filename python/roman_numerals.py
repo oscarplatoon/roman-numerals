@@ -1,7 +1,8 @@
 def to_roman(num):
+
     roman_dict = {
 
-        'M': 1000,
+    'M': 1000,
     'CM' : 900,
     'D': 500,
     'CD': 400,
@@ -16,15 +17,16 @@ def to_roman(num):
     'I': 1
         
     } 
+    
+    roman_num = ''
+    div = num / roman_dict['L']
+    for i, r_num in enumerate(roman_dict):
+        while (num>=roman_dict[r_num]):
+            roman_num+= r_num
+            num-= roman_dict[r_num]
+    print(roman_num)
+    return roman_num
 
-    output = ""
-    for x in roman_dict:
-       #print (roman_dict[x])
-        while (num>=roman_dict[x]):
-            output = output + x
-            num = num - roman_dict [x]
-
-    return output
 to_roman(60)
         
         
