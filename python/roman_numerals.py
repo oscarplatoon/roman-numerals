@@ -9,54 +9,45 @@
 # 7. Return OUTPUT
 
 #python
-# I : 1
-# V : 5
-# X -> 10
-# L -> 50
-# C -> 100
-# D -> 500
-# M -> 1000
-
 import math
-
-
 def to_roman(num):
 
-    roman_str = ''
-
     dict_roman_num = {
-        'I' : 1,
-        'V' : 5,
-        'X' : 10,
-        'L' : 50,
-        'C' : 100,
+        'M' : 1000,
+        'CM': 900,
         'D' : 500,
-        'M' : 1000
+        'CD': 400, 
+        'C' : 100,
+        'XC': 90,
+        'L' : 50,
+        'XL': 40,
+        'X' : 10,
+        'IX': 9,
+        'V' : 5,
+        'IV': 4,
+        'I' : 1
     }
-
-    #print(type(dict_roman_num[1])) # 1
-
-    for key in dict_roman_num:
-        include = dict_roman_num.get(key)
-        roman_char = dict_roman_num.values()
-        
-        result = math.floor(num / include)
-        
-        print(key, include, roman_char, result)
-
-        for val in range(result):
-            val += 1
-            roman_str = roman_str + roman_char(val)
-
-        num = num % include
-
-        if num == 0:
-            break
-        
-        #print(include,roman_char)
-
-
-
-
+    
+    roman_char_list = [] # target list for appended roman chars from dict
+    roman_value_list = [] # target list for appended values from dict
+    
+    roman_str = ''
+    
+    for roman_char, roman_value in dict_roman_num.items(): # 
+        roman_char_list.append(roman_char)
+        roman_value_list.append(roman_value)        
+        # Create iterable lists from dict items of key, values
+    
+    
+    index = 0
+    while num > 0:
+        for x in range(math.floor(num /roman_value_list[index])): #Iterate through the range of number / index at value list
+            roman_str += roman_char_list[index] # roman string adds I
+            # print(roman_str, roman_char_list[index])
+            num -= roman_value_list[index] # num param decrements to 0 and breaks out
+            # print(roman_value_list[index])
+        index += 1 # add 1 to index value to iterate through lists
+       
+    return roman_str
 
 
